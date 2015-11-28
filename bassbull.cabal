@@ -16,13 +16,22 @@ build-type:          Simple
 -- extra-source-files:  
 cabal-version:       >=1.10
 
-executable bassbull
+library
   ghc-options:         -Wall
-  hs-source-dirs:      src
-  main-is:             Main.hs
+  exposed-modules:     BassBull
   build-depends:       base >=4.5 && <4.8,
                        bytestring,
                        vector,
+                       cassava
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable bassbull
+  main-is:             Main.hs
+  ghc-options:         -rtsopts -02
+  build-depends:       base >=4.5 && <4.8,
+                       bassbull,
+                       bytestring,
                        cassava
   default-language:    Haskell2010
   -- other-modules:       
